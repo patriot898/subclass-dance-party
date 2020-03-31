@@ -1,6 +1,8 @@
 $(document).ready(function() {
   window.dancers = [];
 
+  let limitCreationOfStalker = 0;
+
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -22,12 +24,33 @@ $(document).ready(function() {
 
     // make a dancer with a random position
 
-    var dancer = dancerMakerFunction(
+    var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
       Math.random() * 1000
     );
+
+
+    if(dancerMakerFunctionName === 'MakeFollowDancer') {
+      limitCreationOfStalker++;
+
+      if(limitCreationOfStalker >= 2) {
+       $('.followDancerBtn').unbind('click');
+      }
+    }
+
+    window.dancers.push(dancer);
     $('body').append(dancer.$node);
+
   });
+
+  $('.lineUpDanceBtn').on('click', function(event) {
+    let incrementer = 100;
+    for(var i = 0; i < window.dancers.length; i++) {
+      window.dancers[i].setPosition(300, incrementer);
+      incrementer += 50;
+    }
+  });
+
 });
 
