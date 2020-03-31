@@ -12,10 +12,12 @@ body, a:link, a:visited, a:active{
 .title, .addDancerButton{
   padding:5px 12px;
   float:right;
+  z-index: 100;
 }
 .topbar{
   height:32px;
   background-color: #555;
+  z-index: 100;
 }
 .title{
   background-color: #777;
@@ -24,4 +26,40 @@ body, a:link, a:visited, a:active{
   border:10px solid red;
   border-radius:10px;
   position:absolute;
+}
+
+.followDancer{
+  border:10px solid rgb(255, 0, 234);
+  border-radius:10px;
+  position:absolute;
+  z-index: 1;
+}
+
+.bounceDancer {
+  border:10px solid rgb(238, 255, 0);
+  border-radius:10px;
+  position:absolute;
+  -webkit-animation-name: bounce;
+  animation-name: bounce;
+
+}
+
+@-webkit-keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);}
+  40% {-webkit-transform: translateY(-30px);}
+  60% {-webkit-transform: translateY(-15px);}
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+  40% {transform: translateY(-30px);}
+  60% {transform: translateY(-15px);}
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 0.75s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
 }
