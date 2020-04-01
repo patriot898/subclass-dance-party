@@ -2,7 +2,7 @@ var MakeBlinkyDancer = function(top, left, timeBetweenSteps) {
   this.oldStep = MakeDancer.prototype.step;
 
   MakeDancer.call(this, top, left, timeBetweenSteps);
-  $(this.$node).prepend('<img class = "bounceDancerImg" src = "break_dance.gif" />');
+  $(this.$node).prepend('<img class = "dancerImg" src = "break_dance.gif" />');
 
   // we plan to overwrite the step function below, but we still want the superclass step behavior to work,
   // so we must keep a copy of the old version of this function

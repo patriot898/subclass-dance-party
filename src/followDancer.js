@@ -6,7 +6,7 @@ var MakeFollowDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   //this.$node = $('<span class="followDancer"></span>');
   $(this.$node).toggleClass('dancer followDancer');
-  $(this.$node).prepend('<img class = "followDancerImg" src = "girl_dance_1.gif" />');
+  $(this.$node).prepend('<img class = "dancerImg" src = "girl_dance_1.gif" />');
 
 
 

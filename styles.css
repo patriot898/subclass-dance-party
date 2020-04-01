@@ -67,3 +67,8 @@ body, a:link, a:visited, a:active{
   animation-fill-mode: both;
   animation-iteration-count: infinite;
 }
+
+.dancerImg {
+  width: 100px;
+  height: auto;
+}
