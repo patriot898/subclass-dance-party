@@ -72,3 +72,8 @@ body, a:link, a:visited, a:active{
   width: 100px;
   height: auto;
 }
+
+.lineUpDanceBtn {
+  padding:5px 12px;
+  float:right;
+}

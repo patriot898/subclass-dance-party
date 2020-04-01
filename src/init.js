@@ -2,9 +2,10 @@ $(document).ready(function() {
   window.dancers = [];
 
   let limitCreationOfStalker = 1;
-  let spaceBetweenDancers = 125;
+  let spaceBetweenDancers = 75;
   let stalkerCount = 0;
   let dancerWidth = 100;
+
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -46,27 +47,50 @@ $(document).ready(function() {
 
   });
 
-  $('.lineUpDanceBtn').on('click', function(event) {
+  /*$('.lineUpDanceBtn').on('click', function(event) {
     let incrementer = spaceBetweenDancers;
     for(var i = 0; i < window.dancers.length; i++) {
       window.dancers[i].setPosition(400, incrementer);
       incrementer += spaceBetweenDancers;
     }
-  });
+  });*/
 
+  $('.lineUpDanceBtn').on('click', function(event) {
+    let windowWidth = $(window).width();
+    let windowHeight = $(window).height();
+    console.log('width => ', windowWidth)
 
-  let windowWidth = $(window).width();
-  console.log('width => ', windowWidth)
+    // if window.dancers.length * ( incrementer + dancerWidth) > windomWidth - (2 * incrementer)
+    if(window.dancers.length * (spaceBetweenDancers + dancerWidth) > (windowWidth - (2 * spaceBetweenDancers))) {
+      // iterate the dancers container until the length divided by 2 (use ceiling)
+      var startingXPosition = 100;
+      var staticYPosition1 = windowHeight * 0.40;
+      var staticYPosition2 = windowHeight * 0.70;
+      var incrementer = 0; //(or whatever the starting position of x is)
+      for(let i = 0; i < Math.ceil(window.dancers.length/2); i++) {
+        // set window.dancers[i] to static y1, x + incrementer
+        window.dancers[i].setPosition(staticYPosition1, startingXPosition + incrementer);
+        //incrementer += space between dancers
+        incrementer += spaceBetweenDancers;
 
-  // if window.dancers.length * ( incrementer + dancerWidth) > windomWidth - (2 * incrementer)
-  if(window.dancers.length * (spaceBetweenDancers + dancerWidth) > (windowWidth - (2 * spaceBetweenDancers))) {
-    // iterate the dancers container until the length divided by 2 (use ceiling)
-      // set window.dancers[i] to static y1, x + incrementer
-      //incrementer += space between dancers
-    // reset the incrementer = 0
+      }
+      // reset the incrementer = 0
+      incrementer = 0;
+      // iterate the dancers container from Math.floor until the end
+      for(let j = Math.floor(window.dancers.length/2); j < window.dancers.length; j++) {
+        window.dancers[j].setPosition(staticYPosition2, startingXPosition + incrementer);
+        incrementer += spaceBetweenDancers;
+      }
+
       // set window.dancers[i] to static y2, x + incrementer
-
-  }
+    } else {
+      let incrementer = spaceBetweenDancers;
+      for(var i = 0; i < window.dancers.length; i++) {
+        window.dancers[i].setPosition(windowHeight * 0.50, incrementer);
+        incrementer += spaceBetweenDancers;
+      }
+    }
+  });
 
 
 
