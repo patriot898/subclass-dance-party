@@ -3,6 +3,8 @@ var MakeBounceDancer = function(top, left, timeBetweenSteps) {
   MakeDancer.call(this, top, left, timeBetweenSteps);
   $(this.$node).toggleClass('dancer bounceDancer');
   $(this.$node).addClass('animated');
+  $(this.$node).prepend('<img class = "bounceDancerImg" src = "baby_dance.gif" />');
+
 
 }
 

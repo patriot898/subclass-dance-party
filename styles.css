@@ -3,7 +3,11 @@ body, html{
 }
 body{
   margin: 0px;
+  padding: 0px 50px 50px 50px;
+  background-image: url('dancefloor.jpg');
   background-color:#444;
+  background-repeat: no-repeat;
+  background-size: cover;
   font-size: 18px;
 }
 body, a:link, a:visited, a:active{
@@ -23,21 +27,21 @@ body, a:link, a:visited, a:active{
   background-color: #777;
 }
 .dancer{
-  border:10px solid red;
-  border-radius:10px;
+  /*border:10px solid red;
+  border-radius:10px;*/
   position:absolute;
 }
 
 .followDancer{
-  border:10px solid rgb(255, 0, 234);
-  border-radius:10px;
+  /*border:10px solid rgb(255, 0, 234);
+  border-radius:10px;*/
   position:absolute;
   z-index: 1;
 }
 
 .bounceDancer {
-  border:10px solid rgb(238, 255, 0);
-  border-radius:10px;
+  /*border:10px solid rgb(238, 255, 0);
+  border-radius:10px;*/
   position:absolute;
   -webkit-animation-name: bounce;
   animation-name: bounce;

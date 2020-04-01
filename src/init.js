@@ -1,7 +1,9 @@
 $(document).ready(function() {
   window.dancers = [];
 
-  let limitCreationOfStalker = 0;
+  let limitCreationOfStalker = 1;
+  let spaceBetweenDancers = 125;
+  let stalkerCount = 0;
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
@@ -30,11 +32,10 @@ $(document).ready(function() {
       Math.random() * 1000
     );
 
-
     if(dancerMakerFunctionName === 'MakeFollowDancer') {
-      limitCreationOfStalker++;
+      stalkerCount++;
 
-      if(limitCreationOfStalker >= 2) {
+      if(stalkerCount >= limitCreationOfStalker) {
        $('.followDancerBtn').unbind('click');
       }
     }
@@ -45,12 +46,14 @@ $(document).ready(function() {
   });
 
   $('.lineUpDanceBtn').on('click', function(event) {
-    let incrementer = 100;
+    let incrementer = spaceBetweenDancers;
     for(var i = 0; i < window.dancers.length; i++) {
-      window.dancers[i].setPosition(300, incrementer);
-      incrementer += 50;
+      window.dancers[i].setPosition(400, incrementer);
+      incrementer += spaceBetweenDancers;
     }
   });
+
+
 
 });
 
